@@ -52,7 +52,6 @@ $atual = "Agendamento";
                   <th>Data de Check-out</th>
                   <th>Status</th>
                   <th>Quarto</th>
-                  <th>Funcionário</th>
                   <th>Observações</th>
                   <th>Ações</th>
                 </tr>
@@ -71,7 +70,6 @@ $atual = "Agendamento";
                       echo "Fechado";
                     ?></td>
                     <td><?= $agend['ID_QUARTO'] ?></td>
-                    <td><?= $agend['ID_FUNCIONARIO'] ?></td>
                     <td><?php if (strlen($agend['OBS']) > 20) {
                       echo substr($agend['OBS'], 0, 15);
                       echo '...';
@@ -82,10 +80,6 @@ $atual = "Agendamento";
                       echo $agend['OBS']; ?>
                     </td>
                     <td>
-        <a href="#" class="btn btn-secondary btn-sm" title="Ver">
-          <span class="bi-eye-fill"></span>
-          <span class="material-symbols-outlined">visibility</span>
-        </a>
         <a data-bs-toggle="modal" data-bs-target="#addModal" href="#" class="btn btn-light btn-sm" title="Editar">
           <span class="bi-pencil-fill"></span>
           <span class="material-symbols-outlined">edit</span>
