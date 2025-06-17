@@ -117,7 +117,7 @@ function mostrarResumo() {
   const dados = coletarDadosFormulario()
 
   let html = `
-    <div class="card">
+    <div class="card ">
       <div class="card-body">
         <h5 class="card-title">Resumo do Atendimento</h5>
         
@@ -148,7 +148,7 @@ function mostrarResumo() {
       </div>
     </div>
     <div style="text-align: center; margin-top: 20px;">
-      <button id="btnConfirm" type="submit" class="btn btn-success">Confirmar Atendimento</button>
+      <button id="btnConfirm" type="submit" class="btn btn-light btn-prim">Confirmar</button>
     </div>
   `
 
@@ -236,10 +236,10 @@ async function enviarFormulario() {
     const result = await response.json()
 
     if (result.success) {
-  alert(result.message)
-  // Redirecionar ou limpar formulário
-  window.location.reload()
-} else {
+      alert(result.message)
+      // Redirecionar ou limpar formulário
+      window.location.reload()
+    } else {
       alert("Erro: " + result.message)
     }
   } catch (error) {
@@ -290,13 +290,13 @@ function getTipoDocumento(tipo) {
   return tipos[tipo] || "N/A"
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();  // evita o reload e envio normal
 
   enviarFormulario();      // chama sua função ajax de envio
 });
 
-$("#btnConfirm").on('click', function(){
+$("#btnConfirm").on('click', function () {
   message("Dados salvos com sucesso!")
 })
 
