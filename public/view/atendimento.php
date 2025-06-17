@@ -1,3 +1,5 @@
+
+
 <?php
 require_once __DIR__ . '/../controller/loginController.php';
 require_once __DIR__ . '/../controller/atendimentoController.php';
@@ -36,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="progress-step" data-title="Resumo"></div>
     </div>
     <!-- Formulario 1: Ficha de hospedagem -->
-    <form>
+     
+    <form id="atendimentoForm" action="../controller/salvarAtendimento.php?action=create" method="POST">
         <div class="form-step form-step-active flex flex-row col-md-12" id="step1">
             <div class="card-group ">
                 <!-- Lado esquerdo -->
@@ -45,19 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h5 class="card-title">Ficha de hospedagem</h5>
                         <div class="mb-3 ">
                             <label for="nameInput" class="form-label">Nome completo*</label>
-                            <input type="text" class="form-control" id="nameInput">
+                            <input type="text" class="form-control" id="nameInput" name="nome">
                         </div>
                         <div class="mb-3 col-6">
                             <label for="dateInput" class="form-label">Data de nascimento*</label>
-                            <input type="date" class="form-control" id="dateInput" max='2025-01-01'>
+                           <input type="date" class="form-control" id="dateInput" name="data_nascimento">
+
                         </div>
                         <div class="mb-3">
                             <label for="payInput" class="form-label">Fiador*</label>
-                            <input type="text" class="form-control" id="payInput">
+                            <input type="text" class="form-control" id="payInput" name="fiador">
                         </div>
                         <div class="mb-3 col-6">
                             <label for="contInput" class="form-label">Contato*</label>
-                            <input type="text" class="form-control" id="contInput">
+                           <input type="text" class="form-control" id="contInput" name="contato">
                         </div>
                     </div>
                 </div>
@@ -75,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <br>
                         <div class="mb-3">
                             <label for="typeInput" class="form-label">Tipo de documento*</label>
-                            <select id="typeInput" class="form-select" onchange="clearDoc('docInput')"
+                            <select id="typeInput" name="tipo_documento" class="form-select" onchange="clearDoc('docInput')"
                                 aria-label="Tipo de documento">
                                 <option selected disabled>Selecione</option>
                                 <option value="1">RG</option>
@@ -85,11 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="mb-3">
                             <label for="docInput" class="form-label">Número do Documento*</label>
-                            <input type="text" class="form-control" id="docInput" min=0>
+                            <input type="text" class="form-control" id="docInput" name="documento">
                         </div>
                         <div class="mb-3">
                             <label for="obsInput" class="form-label">Observações</label>
-                            <textarea class="form-control" id="obsInput" rows="3"></textarea>
+                            <textarea class="form-control" id="obsInput" name="obs"></textarea>
                         </div>
                     </div>
                 </div>
@@ -352,7 +356,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <h5 class="card-title">Agendamento</h5>
                             <div class="mb-3">
                                 <label for="checkInInput" class="form-label">Data de Check-in*</label>
-                                <input type="date" class="form-control" id="checkInInput">
+                                <input type="date" class="form-control" name="check_in" id="checkInInput">
                             </div>
                         </div>
                     </div>
@@ -361,7 +365,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <h5 class="card-title"><br></h5>
                             <div class="mb-3">
                                 <label for="checkOutInput" class="form-label">Data de Check-out*</label>
-                                <input type="date" class="form-control" id="checkOutInput">
+                                <input type="date" class="form-control" name="check_out" id="checkOutInput">
                             </div>
                         </div>
                     </div>
@@ -369,8 +373,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="card-body" style="width: 15rem">
                             <h5 class="card-title"><br></h5>
                             <div class="mb-3">
-                                <label for="typeRoomInput" class="form-label">Tipo de quarto*</label>
-                                <select id="typeRoomInput" class="form-select" aria-label="Tipo de quarto">
+                                <label for="typeRoomInput"  class="form-label">Tipo de quarto*</label>
+                                <select name="id_quarto" id="typeRoomInput" name="tipo_quarto" class="form-select" aria-label="Tipo de quarto">
                                     <option selected disabled>Selecione</option>
                                     <option value="1">Standard</option>
                                     <option value="2">Suíte</option>
@@ -403,7 +407,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <h5 class="card-title"><br></h5>
                             <div class="mb-3">
                                 <label for="obsRoomInput" class="form-label">Observações</label>
-                                <textarea class="form-control" id="obsRoomInput" rows="5"></textarea>
+                                <textarea class="form-control" id="obsRoomInput" name="obs_quarto"></textarea>
                             </div>
                         </div>
                     </div>
@@ -416,12 +420,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </div>
-
+                            
         <!-- Página 3 -->
-        <div class="form-step" id="step3" style="margin: 20px">
+        <div class="form-step flex" id="step3" style="margin: 20px">
             <h5>Resumo</h5>
+            <div style="justify-content: center" id="resumo"></div>
             <button type="button" class="btn btn-secondary btn-prev btn-sec">Anterior</button>
-            <button type="submit" class="btn btn-light btn-next btn-prim">Confirmar</button>
+            
         </div>
 
     </form>

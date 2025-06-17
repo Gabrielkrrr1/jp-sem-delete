@@ -71,6 +71,10 @@ $atual = "Patrimônio";
                     ?></td>
                     <td><?= $patrimonio['ID_QUARTO'] ?></td>
                      <td>
+        <a href="#" class="btn btn-secondary btn-sm" title="Ver">
+          <span class="bi-eye-fill"></span>
+          <span class="material-symbols-outlined">visibility</span>
+        </a>
         <a data-bs-toggle="modal" data-bs-target="#addModal" href="#" class="btn btn-light btn-sm" title="Editar">
           <span class="bi-pencil-fill"></span>
           <span class="material-symbols-outlined">edit</span>
