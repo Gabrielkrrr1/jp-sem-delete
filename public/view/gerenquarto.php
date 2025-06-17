@@ -63,19 +63,22 @@ $atual = "Quarto";
                     else
                       echo "Ocupado";
                     ?></td>
-                    <td>
-                      <a href="#" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;<span
-                          class="material-symbols-outlined" title="Ver">visibility</span></a>
-                      <a data-bs-toggle="modal" data-bs-target="#addModal" href="#" class="btn btn-light btn-sm"><span
-                          class="bi-pencil-fill"></span>&nbsp;<span class="material-symbols-outlined"
-                          title="Editar">edit</span></a>
-                      <form action="acoes.php" method="POST" class="d-inline">
-                        <a data-bs-toggle="modal" data-bs-target="#deleteModal" href="#" class="btn btn-danger btn-sm">
-                          <span class="bi-trash3-fill"></span>&nbsp;<span class="material-symbols-outlined"
-                            title="Deletar">delete</span>
-                        </a>
-                      </form>
-                    </td>
+                     <td>
+        <a href="#" class="btn btn-secondary btn-sm" title="Ver">
+          <span class="bi-eye-fill"></span>
+          <span class="material-symbols-outlined">visibility</span>
+        </a>
+        <a data-bs-toggle="modal" data-bs-target="#addModal" href="#" class="btn btn-light btn-sm" title="Editar">
+          <span class="bi-pencil-fill"></span>
+          <span class="material-symbols-outlined">edit</span>
+        </a>
+        <form action="../controller/deletarQuarto.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este quarto?');" style="display:inline;">
+          <input type="hidden" name="id" value="<?= $room['ID_QUARTO'] ?>">
+          <button type="submit" class="btn btn-danger btn-sm" title="Excluir">
+    <span class="material-symbols-outlined">delete</span>
+  </button>
+        </form>
+      </td>
                   </tr>
                   <?php
                 }
