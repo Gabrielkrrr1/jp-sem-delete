@@ -1,0 +1,151 @@
+:root {
+  --primary-color: #f3c20a;
+}
+
+.btn-index {
+  height:100px;
+  width:240px;
+}
+
+.btn-light {
+    background-color: var(--primary-color) !important;
+    border-color: #e1b109 !important;
+  }
+  .btn-light:hover,
+  .btn-light:active,
+  .btn-light:visited,
+  .btn-light:focus {
+    background-color: var(--primary-color) !important;
+    border-color: #e1b109 !important;
+  }
+
+.btn-prim {
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    height:50px;
+    width:120px;
+    font-size:1.1em;
+}
+
+.btn-sec {
+  position:fixed;
+  right:150px;
+  bottom:15px;
+  height:40px;
+  width:90px;
+}
+
+.btn-tn {
+  width:2em;
+  height:2em;
+  text-align: center;
+}
+
+footer {
+  background-color: #777777;
+  color: whitesmoke;
+  text-align: center;
+  padding: 1em 0 0.1em 0;
+}
+
+.fundo-claro {
+  background-image: url('../img/winnerfachada.jpg');
+  background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
+}
+
+.fade-stack {
+  z-index: 1039 !important;
+}
+
+.navbar{
+    font-size:1.1em;
+    border-bottom: 2px solid black;
+}
+
+/* Barra de progresso */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 2rem 10rem 4rem;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--primary-color);
+  width: 0%;
+  transition: 0.3s;
+}
+
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.progress-step-active {
+  background-color: var(--primary-color);
+}
+
+/* Form */
+.form-step {
+  display: none;
+  transform-origin: top;
+}
+
+.form-step-active {
+  display: inline-block;
+}
+
+
+.extra-ficha {
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+
+.extra-ficha-active {
+  display: inline-block;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
